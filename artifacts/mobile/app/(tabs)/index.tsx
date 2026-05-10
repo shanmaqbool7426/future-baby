@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
+  Image,
   Platform,
   ScrollView,
   StyleSheet,
@@ -11,7 +12,12 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Animated, { FadeInDown } from "react-native-reanimated";
+import Animated, {
+  FadeInDown,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 import { Feather } from "@expo/vector-icons";
 import { UploadCard } from "@/components/UploadCard";
 import { PremiumButton } from "@/components/PremiumButton";
@@ -19,12 +25,26 @@ import { PremiumModal } from "@/components/PremiumModal";
 import { useColors } from "@/hooks/useColors";
 import { useAppStore, type Gender, type AgeGroup } from "@/store/appStore";
 import { BABY_IMAGES } from "@/constants/babyImages";
-import { Image } from "react-native";
 
-const GENDER_OPTIONS: { id: Gender; label: string; icon: string }[] = [
-  { id: "boy", label: "Boy", icon: "👦" },
-  { id: "girl", label: "Girl", icon: "👧" },
-  { id: "surprise", label: "Surprise", icon: "✦" },
+const GENDER_OPTIONS: { id: Gender; label: string; image: ReturnType<typeof require>; accentColor: string }[] = [
+  {
+    id: "boy",
+    label: "Boy",
+    image: require("../../assets/images/gender_boy.png"),
+    accentColor: "#6D9EEB",
+  },
+  {
+    id: "girl",
+    label: "Girl",
+    image: require("../../assets/images/gender_girl.png"),
+    accentColor: "#D4A0F7",
+  },
+  {
+    id: "surprise",
+    label: "Surprise",
+    image: require("../../assets/images/gender_surprise.png"),
+    accentColor: "#8B5CF6",
+  },
 ];
 
 const AGE_OPTIONS: { id: AgeGroup; label: string }[] = [
@@ -136,35 +156,55 @@ export default function HomeScreen() {
         <Animated.View entering={FadeInDown.duration(400).delay(140)} style={styles.section}>
           <Text style={styles.sectionLabel}>Baby Gender</Text>
           <View style={styles.optionRow}>
-            {GENDER_OPTIONS.map((opt) => (
-              <TouchableOpacity
-                key={opt.id}
-                onPress={() => {
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                  setGender(opt.id);
-                }}
-                activeOpacity={0.85}
-                style={[
-                  styles.optionBtn,
-                  {
-                    backgroundColor:
-                      gender === opt.id ? colors.primary : colors.gray,
-                    borderColor:
-                      gender === opt.id ? colors.primary : "transparent",
-                  },
-                ]}
-              >
-                <Text style={styles.optionEmoji}>{opt.icon}</Text>
-                <Text
+            {GENDER_OPTIONS.map((opt) => {
+              const isSelected = gender === opt.id;
+              return (
+                <TouchableOpacity
+                  key={opt.id}
+                  onPress={() => {
+                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                    setGender(opt.id);
+                  }}
+                  activeOpacity={0.88}
                   style={[
-                    styles.optionText,
-                    { color: gender === opt.id ? "#fff" : colors.darkText },
+                    styles.genderCard,
+                    {
+                      backgroundColor: isSelected ? colors.purple100 : "#FFFFFF",
+                      borderColor: isSelected ? colors.primary : colors.border,
+                      shadowColor: isSelected ? colors.primary : "#000",
+                      shadowOpacity: isSelected ? 0.18 : 0.05,
+                    },
                   ]}
                 >
-                  {opt.label}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                  {isSelected && (
+                    <View style={[styles.genderCheckmark, { backgroundColor: colors.primary }]}>
+                      <Feather name="check" size={10} color="#fff" />
+                    </View>
+                  )}
+                  <View style={[
+                    styles.genderImageWrapper,
+                    { backgroundColor: isSelected ? "rgba(139,92,246,0.08)" : colors.gray }
+                  ]}>
+                    <Image
+                      source={opt.image}
+                      style={styles.genderImage}
+                      resizeMode="cover"
+                    />
+                  </View>
+                  <Text
+                    style={[
+                      styles.genderLabel,
+                      {
+                        color: isSelected ? colors.primary : colors.subtleText,
+                        fontFamily: isSelected ? "Inter_600SemiBold" : "Inter_500Medium",
+                      },
+                    ]}
+                  >
+                    {opt.label}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
           </View>
         </Animated.View>
 
@@ -320,16 +360,45 @@ const styles = StyleSheet.create({
   sectionLabel: { fontSize: 15, fontFamily: "Inter_600SemiBold", color: "#1A1A2E" },
   seeAll: { fontSize: 13, fontFamily: "Inter_500Medium" },
   optionRow: { flexDirection: "row", gap: 10 },
-  optionBtn: {
+  genderCard: {
     flex: 1,
-    paddingVertical: 12,
-    borderRadius: 14,
-    alignItems: "center",
+    borderRadius: 18,
     borderWidth: 1.5,
-    gap: 4,
+    paddingVertical: 14,
+    paddingHorizontal: 8,
+    alignItems: "center",
+    gap: 10,
+    position: "relative",
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 10,
+    elevation: 3,
   },
-  optionEmoji: { fontSize: 18 },
-  optionText: { fontSize: 13, fontFamily: "Inter_600SemiBold" },
+  genderCheckmark: {
+    position: "absolute",
+    top: 8,
+    right: 8,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  genderImageWrapper: {
+    width: 64,
+    height: 64,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+  },
+  genderImage: {
+    width: 64,
+    height: 64,
+  },
+  genderLabel: {
+    fontSize: 13,
+    letterSpacing: 0.2,
+  },
   ageBtn: { flex: 1, paddingVertical: 12, borderRadius: 12, alignItems: "center", borderWidth: 1.5 },
   ageBtnText: { fontSize: 13 },
   tipCard: {
