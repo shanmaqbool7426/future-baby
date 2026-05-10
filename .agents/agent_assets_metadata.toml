@@ -24,3 +24,21 @@ id = "QQW25dh5lv6QlHR1RD67N"
 uri = "file://artifacts/mobile/assets/images/baby_result_3.png"
 type = "image"
 title = "baby result 3"
+
+[[generated]]
+id = "P6ZV48Lo_GKSNZLlp_7Oj"
+uri = "file://artifacts/mobile/assets/images/gender_boy.png"
+type = "image"
+title = "boy gender icon"
+
+[[generated]]
+id = "-qy1VpED6m7FbtOor8ykn"
+uri = "file://artifacts/mobile/assets/images/gender_girl.png"
+type = "image"
+title = "girl gender icon"
+
+[[generated]]
+id = "Q0hnvVa9kEEZN6R9yK5UE"
+uri = "file://artifacts/mobile/assets/images/gender_surprise.png"
+type = "image"
+title = "surprise gender icon"
