@@ -1,0 +1,238 @@
+Create a premium AI-powered Baby Generator mobile app in React Native Expo + TypeScript.
+IMPORTANT: Do NOT use random AI-generated illustrations, fake cartoon artwork, or unrelated stock images in the UI.
+The app must use:
+
+* Professional SVG icons
+* Minimal premium vector graphics
+* Elegant UI illustrations only where necessary
+* Real user-uploaded photos for baby generation
+* Clean Apple-level interface
+* No childish design
+* No cheap gradients
+* No overcrowded screens
+
+APP STYLE:
+The design should feel like:
+
+* Apple + Airbnb + Instagram combined
+* Clean luxury interface
+* Minimal premium look
+* Soft modern light theme
+* Elegant spacing
+* Smooth animations
+* Premium shadows
+* Rounded glass cards
+* High-end typography
+
+PRIMARY COLORS:
+
+* White: #FFFFFF
+* Soft Purple: #8B5CF6
+* Lavender: #A78BFA
+* Soft Cream: #FAF7FF
+* Light Gold Accent: #F6E7B2
+* Soft Gray: #F3F4F6
+
+TYPOGRAPHY:
+
+* Use modern fonts like:
+
+  * Inter
+  * SF Pro Display
+  * Poppins
+* Large bold headers
+* Clean readable UI
+
+DO NOT:
+
+* Use random baby clipart
+* Use low-quality illustrations
+* Use unnecessary photos
+* Use childish emojis everywhere
+* Use dark heavy neon gaming UI
+* Use cluttered gradients
+* Use copied Play Store designs
+
+USE INSTEAD:
+
+* Lucide Icons
+* Phosphor Icons
+* Elegant SVG illustrations
+* Glassmorphism cards
+* Modern premium buttons
+* Minimal onboarding artwork
+* Professional loaders
+
+TECH STACK:
+
+* React Native Expo
+* TypeScript
+* NativeWind
+* React Navigation
+* React Native Reanimated
+* Expo Blur
+* Expo Linear Gradient
+* Firebase
+* Zustand
+
+APP NAME:
+FutureBaby AI
+
+MAIN FLOW:
+
+1. User uploads mother photo
+2. User uploads father photo
+3. AI detects faces
+4. User selects:
+
+   * Boy
+   * Girl
+   * Surprise
+5. User selects age:
+
+   * Baby
+   * Toddler
+   * Child
+   * Teen
+6. AI generates realistic future baby image
+7. User can:
+
+   * Save
+   * Share
+   * Regenerate
+   * Upgrade to premium
+
+DESIGN REQUIREMENTS:
+Every screen must look production-ready.
+
+SPLASH SCREEN:
+
+* White background
+* Minimal animated logo
+* Soft glowing effect
+* Small AI particles animation
+
+ONBOARDING:
+
+* Minimal clean slides
+* Use icons + vector art only
+* Explain features simply
+* Smooth swipe animations
+* Premium typography
+
+HOME SCREEN:
+
+* Clean dashboard
+* Large elegant heading:
+  “Create Your Future Baby”
+* Two upload cards:
+
+  * Mother Photo
+  * Father Photo
+* Upload cards use icons first
+* Real images appear ONLY after upload
+* Premium Generate button
+* Recent generations section
+* AI tips section
+* Floating soft gradients
+
+UPLOAD UI:
+Before upload:
+
+* Show elegant camera/upload icons
+* Minimal placeholders
+  After upload:
+* Show real user image in premium rounded card
+
+AI PROCESSING SCREEN:
+
+* Face scan animation
+* AI particles
+* Circular progress loader
+* Animated glowing rings
+* Text:
+  “Analyzing facial features…”
+
+RESULT SCREEN:
+
+* Large premium image preview
+* Swipe between results
+* Download button
+* Share button
+* HD badge
+* Premium lock overlay for premium results
+
+BOTTOM NAVIGATION:
+
+* Home
+* History
+* Premium
+* Profile
+
+Use:
+
+* Floating glass navigation
+* Soft blur background
+* Premium active indicators
+
+ANIMATIONS:
+
+* Smooth page transitions
+* Floating cards
+* Scale animations
+* Skeleton loading
+* Shimmer effects
+* Haptic feedback
+
+PREMIUM FEATURES:
+
+* Unlimited generations
+* HD quality
+* No ads
+* Faster AI processing
+* Multiple baby styles
+* AI enhancement
+
+AI FEATURES:
+
+* Face similarity detection
+* Smart blending
+* Ethnicity balancing
+* Smile prediction
+* Multiple baby variations
+
+FOLDER STRUCTURE:
+Create scalable architecture:
+
+* components/
+* screens/
+* navigation/
+* services/
+* hooks/
+* utils/
+* store/
+* assets/
+* constants/
+
+COMPONENTS TO CREATE:
+
+* PremiumButton
+* UploadCard
+* GlassCard
+* AIProcessingLoader
+* AnimatedHeader
+* GradientBackground
+* PremiumModal
+
+IMPORTANT UI RULES:
+
+* Keep UI minimal
+* Keep whitespace balanced
+* Use icons more than illustrations
+* Real images only after upload
+* Maintain premium consistency
+* Make every component reusable
+* Avoid clutter
+* Focus heavily on luxury mobile UX
+
+The app should feel like a real startup product that could rank #1 on App Store.

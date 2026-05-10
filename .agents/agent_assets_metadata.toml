@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "7imcTY5_xj2Gq9oldUlIF"
+uri = "file://artifacts/mobile/assets/images/icon.png"
+type = "image"
+title = "futurebaby app icon"
+
+[[generated]]
+id = "h0I3rNJUDgFIDcXBTL4mI"
+uri = "file://artifacts/mobile/assets/images/baby_result_1.png"
+type = "image"
+title = "baby result 1"
+
+[[generated]]
+id = "PNeXbfOJHuC9xQNBG9R-3"
+uri = "file://artifacts/mobile/assets/images/baby_result_2.png"
+type = "image"
+title = "baby result 2"
+
+[[generated]]
+id = "QQW25dh5lv6QlHR1RD67N"
+uri = "file://artifacts/mobile/assets/images/baby_result_3.png"
+type = "image"
+title = "baby result 3"
